@@ -39,7 +39,7 @@ exports.getProduct = catchAsync(async(req,res)=>{
 
 exports.getOneProduct = catchAsync(async(req,res,next)=>{
 
-    const product = await Product.findById(req.params.id)
+    const product = await Product.findById(req.params.id).cache({key:req.params.id})
     
     if(!product){
         return next(new AppError("No Product Found With This Id",400))

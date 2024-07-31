@@ -1,6 +1,7 @@
 const express =require('express')
 const productController = require("../controller/product")
 const authController = require("../controller/authController")
+const cleanProductCache = require('../middlewares/cleanProductCache')
 
 const router = express.Router()
 
@@ -11,8 +12,8 @@ router.route('/')
 
 router.route('/:id')
 .get(productController.getOneProduct)
-.delete(productController.deleteProduct)
-.put(productController.updateProduct)
+.delete(cleanProductCache, productController.deleteProduct)
+.put(cleanProductCache, productController.updateProduct)
 
 
 module.exports=router
