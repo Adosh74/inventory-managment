@@ -6,6 +6,7 @@ const Email = require("./utils/Email")
 const authRouter = require('./router/authRouter')
 const ProductRouter = require('./router/productRouter')
 require('dotenv').config()
+require('./services/cache')
 
 const app = express();
 app.use(express.json());
